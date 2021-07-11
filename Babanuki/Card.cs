@@ -42,7 +42,7 @@ namespace Babanuki
         /// <summary>
         /// カードの示す数
         /// </summary>
-        public int number { get; private set; }
+        public int Number { get; private set; }
 
         /// <summary>
         /// コンストラクタ
@@ -52,14 +52,14 @@ namespace Babanuki
         public Card(int suit, int number)
         {
             this.suit = suit;
-            this.number = number;
+            this.Number = number;
         }
 
         public string GetStringCard()
         {
             var card = string.Empty;
 
-            if (number > 0)
+            if (Number > 0)
             {
                 // スートの表示
                 switch (suit)
@@ -84,7 +84,7 @@ namespace Babanuki
                         break;
                 }
 
-                switch (number)
+                switch (Number)
                 {
                     case 1:
                         card += "A";
@@ -107,7 +107,7 @@ namespace Babanuki
                         break;
 
                     default:
-                        card += number;
+                        card += Number;
                         break;
                 }
             }
