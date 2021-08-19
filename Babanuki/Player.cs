@@ -24,11 +24,12 @@ namespace Babanuki
         /// <summary>
         /// 名前
         /// </summary>
-        private string name;
+        public string Name { get; set; }
+
 
         public Player(string name, Master master, Table table)
         {
-            this.name = name;
+            this.Name = name;
             this.master = master;
             this.table = table;
         }
@@ -42,7 +43,7 @@ namespace Babanuki
             Card pickedCard = nextHand.PickCard();
 
             // 引いた結果を表示
-            Console.WriteLine(name + ":" + nextPrayer + "さんから" + pickedCard + "を引きました");
+            Console.WriteLine(Name + ":" + nextPrayer + "さんから" + pickedCard + "を引きました");
 
             // 引いたカードを自分の手札に加え、同じ数のカードがあったら捨てる
             DealCard(pickedCard);
@@ -51,12 +52,12 @@ namespace Babanuki
             if (myHand.GetNumberOfCards() == 0)
             {
                 // 進行役に上がりを宣言する
-                master.declareWin(name);
+                master.DeclareWin(this);
             }
             else
             {
                 // 現在の手札を表示する
-                Console.WriteLine(name + ":残りの手札は" + myHand + "です");
+                Console.WriteLine(Name + ":残りの手札は" + myHand + "です");
             }
         }
 
@@ -68,7 +69,7 @@ namespace Babanuki
         {
             if (myHand.GetNumberOfCards() == 1)
             {
-                master.DeclareWin(name);
+                master.DeclareWin(this);
             }
 
             // 見せる前にシャッフルする
@@ -103,7 +104,7 @@ namespace Babanuki
             if (sameCards != null)
             {
                 // テーブルへカードを捨てる
-                Console.WriteLine(name + "：");
+                Console.WriteLine(Name + "：");
                 table.DisposedCard(sameCards);
             }
         }
