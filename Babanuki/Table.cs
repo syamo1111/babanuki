@@ -16,8 +16,14 @@ namespace Babanuki
         {
             for (int index = 0; index < cards.Length; index++)
             {
-
+                // 捨てられたカードを表示する
+                Console.Write(cards[index] + " ");
             }
+
+            Console.WriteLine("を捨てました");
+
+            // 捨てられたカードはリストに追加しておく
+            disposedCards.AddRange(cards);
         }
     }
 }
